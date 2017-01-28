@@ -6,7 +6,10 @@ class GithubObject(object):
 
     def __init__(self, *args, **kwargs):
         self.root_url = "https://api.github.com"
-        self.auth = (os.environ['GITHUB_USERNAME'], os.environ['GITHUB_PUBLIC_ACCESS_TOKEN'])
+        if 'GITHUB_USERNAME' in os.environ and 'GITHUB_PUBLIC_ACCESS_TOKEN' in os.environ:
+            self.auth = (os.environ['GITHUB_USERNAME'], os.environ['GITHUB_PUBLIC_ACCESS_TOKEN'])
+        else:
+            self.auth = None
 
     def get_organization_url(self, org_name):
         return self.root_url + '/orgs/' + str(org_name)
