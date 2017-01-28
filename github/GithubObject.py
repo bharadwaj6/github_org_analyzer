@@ -2,6 +2,7 @@ import os
 
 
 class GithubObject(object):
+    """Used as a container to keep common github data such as authentication and to return different API urls."""
 
     def __init__(self, *args, **kwargs):
         self.root_url = "https://api.github.com"
